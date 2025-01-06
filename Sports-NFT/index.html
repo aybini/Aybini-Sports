@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorful NFT Cartoonizer</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0e0e0e;
+      overflow: hidden;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+    canvas {
+      border: 10px solid #fff;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 50px rgba(255, 255, 255, 0.5);
+    }
+    #controls {
+      margin-bottom: 20px;
+    }
+    label {
+      margin-right: 10px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff007f;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ff66a3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Colorful NFT Cartoonizer</h1>
+  <div id="controls">
+    <label for="upload-input">Upload Image:</label>
+    <input type="file" id="upload-input" accept="image/*">
+    <button id="download-btn" disabled>Download NFT</button>
+  </div>
+  <canvas id="nft-canvas" width="800" height="800"></canvas>
+
+  <script>
+    const canvas = document.getElementById("nft-canvas");
+    const ctx = canvas.getContext("2d");
+    const uploadInput = document.getElementById("upload-input");
+    const downloadBtn = document.getElementById("download-btn");
+    let uploadedImage = new Image();
+
+    // Create a colorful gradient background
+    function createGradientBackground() {
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, "#ff007f");
+      gradient.addColorStop(0.5, "#00e7ff");
+      gradient.addColorStop(1, "#ffcc00");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Simplify colors while retaining more details
+    function enhanceColors(imageData) {
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        // Adjust the color levels dynamically
+        data[i] = Math.floor(data[i] / 30) * 30 + 15; // Red
+        data[i + 1] = Math.floor(data[i + 1] / 30) * 30 + 15; // Green
+        data[i + 2] = Math.floor(data[i + 2] / 30) * 30 + 15; // Blue
+      }
+      return imageData;
+    }
+
+    // Detect edges and enhance them
+    function detectEdges(imageData) {
+      const width = canvas.width;
+      const height = canvas.height;
+      const grayData = new Uint8ClampedArray(width * height);
+
+      // Convert to grayscale
+      for (let i = 0; i < imageData.data.length; i += 4) {
+        const avg = (imageData.data[i] + imageData.data[i + 1] + imageData.data[i + 2]) / 3;
+        grayData[i / 4] = avg;
+      }
+
+      // Sobel operator
+      const sobelX = [-1, 0, 1, -2, 0, 2, -1, 0, 1];
+      const sobelY = [-1, -2, -1, 0, 0, 0, 1, 2, 1];
+
+      const edgeData = ctx.createImageData(width, height);
+
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          let gx = 0, gy = 0;
+          for (let ky = -1; ky <= 1; ky++) {
+            for (let kx = -1; kx <= 1; kx++) {
+              const pixelIndex = (y + ky) * width + (x + kx);
+              gx += grayData[pixelIndex] * sobelX[(ky + 1) * 3 + (kx + 1)];
+              gy += grayData[pixelIndex] * sobelY[(ky + 1) * 3 + (kx + 1)];
+            }
+          }
+          const magnitude = Math.sqrt(gx * gx + gy * gy);
+          const edgeIndex = (y * width + x) * 4;
+          edgeData.data[edgeIndex] = magnitude; // Red
+          edgeData.data[edgeIndex + 1] = magnitude; // Green
+          edgeData.data[edgeIndex + 2] = magnitude; // Blue
+          edgeData.data[edgeIndex + 3] = 255; // Alpha
+        }
+      }
+      return edgeData;
+    }
+
+    // Apply cartoon effect
+    function applyCartoonEffect(img) {
+      // Draw gradient background
+      createGradientBackground();
+
+      // Draw the image on canvas
+      ctx.drawImage(img, 100, 100, canvas.width - 200, canvas.height - 200);
+
+      // Get image data
+      let imageData = ctx.getImageData(100, 100, canvas.width - 200, canvas.height - 200);
+
+      // Enhance colors
+      imageData = enhanceColors(imageData);
+
+      // Detect edges
+      const edges = detectEdges(imageData);
+
+      // Draw enhanced colors
+      ctx.putImageData(imageData, 100, 100);
+
+      // Overlay edges with transparency
+      ctx.globalAlpha = 0.6;
+      ctx.putImageData(edges, 100, 100);
+      ctx.globalAlpha = 1.0; // Reset transparency
+    }
+
+    // Handle image upload
+    uploadInput.addEventListener("change", (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          uploadedImage.src = reader.result;
+          uploadedImage.onload = () => {
+            applyCartoonEffect(uploadedImage);
+            downloadBtn.disabled = false;
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Download the cartoonized image
+    downloadBtn.addEventListener("click", () => {
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "colorful-nft-cartoon.png";
+      link.click();
+    });
+  </script>
+</body>
+</html>
