@@ -13,7 +13,7 @@ interface SponsorshipPoolProps {
   targetAmount: number
 }
 
-export function SponsorshipPool({ name, type, currentAmount, targetAmount }: SponsorshipPoolProps) {
+export function SponsorshipPool({ name, currentAmount, targetAmount }: SponsorshipPoolProps) {
   const [contribution, setContribution] = useState('')
   const progress = (currentAmount / targetAmount) * 100
 

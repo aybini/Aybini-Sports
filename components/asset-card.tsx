@@ -21,7 +21,7 @@ interface AssetCardProps {
 }
 
 export function AssetCard({ asset }: AssetCardProps) {
-  const { id, name, type, image, currentPrice, change } = asset
+  const { id, name, type, currentPrice, change } = asset
   const [isInvestModalOpen, setIsInvestModalOpen] = useState(false)
 
   return (

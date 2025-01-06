@@ -38,16 +38,17 @@ export default function Marketplace() {
           onChange={(e) => setSearchTerm(e.target.value)}
           className="bg-gray-800 border-gray-700 text-white"
         />
+              <div className="bg-gray-800 border-gray-700 text-white">
         <Select
           value={filterType}
           onValueChange={setFilterType}
-          className="bg-gray-800 border-gray-700 text-white"
         >
           <option value="All">All Types</option>
           <option value="Athlete">Athletes</option>
           <option value="Team">Teams</option>
           <option value="Coach">Coaches</option>
         </Select>
+      </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2">

@@ -15,7 +15,7 @@ export function RealTimePrice({ initialPrice, assetId }: RealTimePriceProps) {
   useEffect(() => {
     // Simulating WebSocket connection
     const interval = setInterval(() => {
-      setPrevPrice(price)
+      setPrevPrice(currPrice => currPrice) // Functional update
       setPrice(prev => {
         const change = (Math.random() - 0.5) * 2
         return Number((prev + change).toFixed(2))
@@ -23,7 +23,7 @@ export function RealTimePrice({ initialPrice, assetId }: RealTimePriceProps) {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [assetId])
+  }, [assetId]) // Only depends on `assetId`
 
   const TrendIcon = price >= prevPrice ? TrendingUp : TrendingDown
   const trendColor = price >= prevPrice ? 'text-green-400' : 'text-red-400'
@@ -35,4 +35,3 @@ export function RealTimePrice({ initialPrice, assetId }: RealTimePriceProps) {
     </div>
   )
 }
-
