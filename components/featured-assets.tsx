@@ -1,11 +1,12 @@
 import { AssetCard } from '@/components/asset-card'
 
 const featuredAssets = [
-  { id: 1, name: "LeBron James", type: "Athlete", image: "/placeholder.svg?height=400&width=300", currentPrice: 1000, change: 2.5 },
-  { id: 2, name: "Manchester United", type: "Team", image: "/placeholder.svg?height=400&width=300", currentPrice: 5000, change: -1.2 },
-  { id: 3, name: "Serena Williams", type: "Athlete", image: "/placeholder.svg?height=400&width=300", currentPrice: 800, change: 1.8 },
-  { id: 4, name: "Pep Guardiola", type: "Coach", image: "/placeholder.svg?height=400&width=300", currentPrice: 500, change: 3.2 },
+  { id: 1, name: "LeBron James", type: "Athlete", image: "/Sports-NFT/Lebron.jpg", currentPrice: 100, change: 2.5 },
+  { id: 2, name: "Manchester United", type: "Team", image: "/Sports-NFT/Manchester-united.jpg", currentPrice: 347, change: -1.2 },
+  { id: 3, name: "Serena Williams", type: "Athlete", image: "/Sports-NFT/Serena-Williams.jpg", currentPrice: 80, change: 1.8 },
+  { id: 4, name: "Pep Guardiola", type: "Coach", image: "/Sports-NFT/Pep-Guardiola.jpg", currentPrice: 50, change: 3.2 },
 ]
+
 
 export function FeaturedAssets() {
   return (
@@ -19,4 +20,6 @@ export function FeaturedAssets() {
     </section>
   )
 }
+
+
 

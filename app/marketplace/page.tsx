@@ -8,14 +8,14 @@ import { AIInsights } from '@/components/ai-insights'
 import { ARViewer } from '@/components/ar-viewer'
 
 const assets = [
-  { id: 1, name: "LeBron James", type: "Athlete", image: "/placeholder.svg?height=400&width=300", currentPrice: 1000, change: 2.5 },
-  { id: 2, name: "Manchester United", type: "Team", image: "/placeholder.svg?height=400&width=300", currentPrice: 5000, change: -1.2 },
-  { id: 3, name: "Serena Williams", type: "Athlete", image: "/placeholder.svg?height=400&width=300", currentPrice: 800, change: 1.8 },
-  { id: 4, name: "Pep Guardiola", type: "Coach", image: "/placeholder.svg?height=400&width=300", currentPrice: 500, change: 3.2 },
-  { id: 5, name: "New York Yankees", type: "Team", image: "/placeholder.svg?height=400&width=300", currentPrice: 5200, change: 0.5 },
-  { id: 6, name: "Cristiano Ronaldo", type: "Athlete", image: "/placeholder.svg?height=400&width=300", currentPrice: 950, change: -0.8 },
-  { id: 7, "name": "Golden State Warriors", type: "Team", image: "/placeholder.svg?height=400&width=300", currentPrice: 4800, change: 1.5 },
-  { id: 8, name: "Simone Biles", type: "Athlete", image: "/placeholder.svg?height=400&width=300", currentPrice: 600, change: 4.2 },
+  { id: 1, name: "LeBron James", type: "Athlete", image: "/Sports-NFT/Lebron.jpg", currentPrice: 100, change: 2.5 },
+  { id: 2, name: "Manchester United", type: "Team", image: "/Sports-NFT/Manchester-united.jpg", currentPrice: 350, change: -1.2 },
+  { id: 3, name: "Serena Williams", type: "Athlete", image: "/Sports-NFT/Serena-Williams.jpg", currentPrice: 80, change: 1.8 },
+  { id: 4, name: "Pep Guardiola", type: "Coach", image: "/Sports-NFT/Pep-Guardiola.jpg", currentPrice: 50, change: 3.2 },
+  { id: 5, name: "New York Yankees", type: "Team", image: "/Sports-NFT/New-york-yankees.jpg", currentPrice: 220, change: 0.5 },
+  { id: 6, name: "Cristiano Ronaldo", type: "Athlete", image: "/Sports-NFT/Christiano-Ronaldo.jpg", currentPrice: 95, change: -0.8 },
+  { id: 7, name: "Golden State Warriors", type: "Team", image: "/Sports-NFT/Golden-State-Warriors.jpg", currentPrice: 380, change: 1.5 },
+  { id: 8, name: "Simone Biles", type: "Athlete", image: "/Sports-NFT/Simone-Biles.jpg", currentPrice: 60, change: 4.2 },
 ]
 
 export default function Marketplace() {

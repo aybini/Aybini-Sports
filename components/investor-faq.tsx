@@ -9,8 +9,8 @@ import {
 
 const faqs = [
   {
-    question: "How does AYBINI ensure the authenticity and uniqueness of athlete NFTs?",
-    answer: "AYBINI partners directly with athletes, teams, and sports organizations to create officially licensed NFTs. Each NFT is minted on a secure blockchain with a unique identifier, ensuring its authenticity and scarcity. We also implement rigorous verification processes to prevent fraud and maintain the integrity of our marketplace."
+    question: "How does AYBINI ensure the authenticity and uniqueness of athlete Virtual Stakes?",
+    answer: "AYBINI partners directly with athletes, teams, and sports organizations to create officially licensed Virtual Stakes. Each NFT is minted on a secure blockchain with a unique identifier, ensuring its authenticity and scarcity. We also implement rigorous verification processes to prevent fraud and maintain the integrity of our marketplace."
   },
   {
     question: "What measures are in place to protect investors from market manipulation?",
@@ -22,11 +22,11 @@ const faqs = [
   },
   {
     question: "What sets AYBINI apart from other sports investment or NFT platforms?",
-    answer: "AYBINI uniquely combines sports fandom with financial investment, offering a more engaging and potentially lucrative experience. Our AI-powered insights, real-time performance tracking, and augmented reality features provide unparalleled depth to the investment process. Furthermore, our direct partnerships with athletes and teams ensure a steady stream of high-quality, exclusive NFTs."
+    answer: "AYBINI uniquely combines sports fandom with financial investment, offering a more engaging and potentially lucrative experience. Our AI-powered insights, real-time performance tracking, and augmented reality features provide unparalleled depth to the investment process. Furthermore, our direct partnerships with athletes and teams ensure a steady stream of high-quality, exclusive Virtual Stakes."
   },
   {
     question: "How does AYBINI plan to scale and maintain its technological edge?",
-    answer: "We have a robust development roadmap that includes expanding our AI capabilities, enhancing our blockchain infrastructure for faster transactions, and introducing new features like virtual reality experiences. We're also actively exploring partnerships with major tech companies to leverage cutting-edge technologies and ensure AYBINI remains at the forefront of the sports investment industry."
+    answer: "We have a robust development roadmap that includes expanding our AI capabilities, enhancing our blockchain infrastructure or payment options for faster transactions, and introducing new features like virtual reality experiences. We're also actively exploring partnerships with major tech companies to leverage cutting-edge technologies and ensure AYBINI remains at the forefront of the sports investment industry."
   },
   {
     question: "Can you explain the new features like Sponsorship Pools and Fantasy Investment Leagues?",

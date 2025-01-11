@@ -13,7 +13,7 @@ export default function Home() {
           Welcome to the Future of Sports Investment
         </h1>
         <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-          Invest in athletes, teams, and coaches through blockchain-powered NFTs. 
+          Invest in athletes, teams, and coaches through blockchain-powered Virtual Stakes. 
           Own a piece of sports history and profit from their success.
         </p>
         <div className="space-x-4">

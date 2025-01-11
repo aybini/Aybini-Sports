@@ -21,18 +21,19 @@ interface AssetCardProps {
 }
 
 export function AssetCard({ asset }: AssetCardProps) {
-  const { id, name, type, currentPrice, change } = asset
+  const { id, name, type, image, currentPrice, change } = asset
   const [isInvestModalOpen, setIsInvestModalOpen] = useState(false)
 
   return (
     <Card className="bg-gray-800 border-gray-700 overflow-hidden hover:shadow-lg hover:shadow-blue-500/20 transition-shadow">
       <div className="relative">
-        <Image 
-          src={`/placeholder.svg?height=400&width=300`} 
+        <Image
+          src={image} 
           alt={name} 
           width={300} 
-          height={400} 
-          className="w-full object-cover h-48" 
+          height={500} 
+          style={{ objectFit: "contain"}}
+          className="w-full h-48" 
         />
         <div className="absolute top-2 right-2 bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-semibold">
           {type}
@@ -60,4 +61,3 @@ export function AssetCard({ asset }: AssetCardProps) {
     </Card>
   )
 }
-
